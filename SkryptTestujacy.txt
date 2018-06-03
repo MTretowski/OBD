@@ -1,0 +1,49 @@
+test1() updating;
+
+vars
+	doradca: OsobistyDoradca;
+	klient: Klient;
+	rachunekOszczednosciowy: RachunekOszczednosciowy;
+	rachunekRozliczeniowy: RachunekRozliczeniowy;
+	oszczednosciowyRachunekKlienta: RachunekOszczednosciowy;
+	rozliczeniowyRachunekKlienta: RachunekRozliczeniowy;
+begin
+	beginTransaction;
+
+	create doradca persistent;
+	doradca.inicjuj("Jan","Doradca");
+	
+	create klient persistent;
+	klient.inicjuj("Magdalena","Kliencka");
+	klient.zmienDoradce(doradca);
+	
+	create rachunekOszczednosciowy persistent;
+	rachunekOszczednosciowy.inicjuj(2.5);
+	klient.zalozRachunekOszczednosciowy(rachunekOszczednosciowy);
+	oszczednosciowyRachunekKlienta := klient.dajRachunekOszczednosciowy(1);
+	write "";
+	oszczednosciowyRachunekKlienta.wyplac(100);
+	write "";
+	oszczednosciowyRachunekKlienta.wplac(200);
+	write "";
+	oszczednosciowyRachunekKlienta.wyplac(100);
+	write "";
+	oszczednosciowyRachunekKlienta.kumulujOdsetki();
+	write "";
+	oszczednosciowyRachunekKlienta.kumulujOdsetki();
+	write "";
+	
+	create rachunekRozliczeniowy persistent;
+	rachunekRozliczeniowy.inicjuj(1000);
+	klient.zalozRachunekRozliczeniowy(rachunekRozliczeniowy);
+	rozliczeniowyRachunekKlienta := klient.dajRachunekRozliczeniowy(1);
+	rozliczeniowyRachunekKlienta.wyplac(100);
+	write "";
+	rozliczeniowyRachunekKlienta.wplac(3000);
+	write "";
+	rozliczeniowyRachunekKlienta.wyplac(1500);
+	write "";
+	rozliczeniowyRachunekKlienta.wyplac(900);
+	
+	commitTransaction;
+end;

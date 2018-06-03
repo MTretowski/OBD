@@ -7,9 +7,6 @@ begin
 end;
 
 
-
-
-
 wyplac(wyplacanaKwota: Decimal) updating;
 
 vars

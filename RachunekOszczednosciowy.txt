@@ -6,11 +6,6 @@ begin
 	self.oprocentowanie := oprocentowanieKonta;
 end;
 
-
-
-
-
-
 vars
 
 begin
@@ -18,11 +13,6 @@ begin
 	self.stanKonta := self.stanKonta + ((self.oprocentowanie/100)*self.stanKonta);
 	write "Stan konta po kapitalizacji odsetek: " & self.pokazSaldo().String;
 end;
-
-
-
-
-
 
 
 wyplac(wyplacanaKwota: Decimal) updating;

@@ -1,0 +1,11 @@
+Osoba
+inicjuj
+inicjuj(imieOsoby: String; nazwiskoOsoby: String) updating;
+
+vars
+
+begin
+	self.imie := imieOsoby;
+	self.nazwisko := nazwiskoOsoby;
+end;
+

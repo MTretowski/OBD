@@ -1,0 +1,43 @@
+dajRachunekOszczednosciowy(indeks: Integer): RachunekOszczednosciowy;
+
+vars
+
+begin
+	return self.listaRachunkowOszczednosciowych[indeks];
+end;
+
+
+dajRachunekRozliczeniowy(indeks: Integer): RachunekRozliczeniowy;
+
+vars
+
+begin
+	return self.listaRachunkowRozliczeniowych[indeks];
+end;
+ 
+
+zalozRachunekOszczednosciowy(nowyRachunek: RachunekOszczednosciowy) updating;
+
+vars
+
+begin
+	self.listaRachunkowOszczednosciowych.add(nowyRachunek);
+end;
+
+
+zalozRachunekRozliczeniowy(nowyRachunek: RachunekRozliczeniowy) updating;
+
+vars
+
+begin
+	self.listaRachunkowRozliczeniowych.add(nowyRachunek);
+end;
+
+
+zmienDoradce(doradca: OsobistyDoradca) updating;
+
+vars
+
+begin
+	self.osobistyDoradca := doradca;
+end;
