@@ -1,0 +1,40 @@
+inicjuj(oprocentowanieKonta: Decimal) updating;
+
+vars
+
+begin
+	self.oprocentowanie := oprocentowanieKonta;
+end;
+
+
+
+
+
+
+vars
+
+begin
+	write "Kapitalizacja odsetek. Stan konta przed kapitalizacj¹ odsetek: " & self.pokazSaldo().String & ". Oprocentowanie konta: " & self.oprocentowanie.String & ". Kwota odsetek: " & ((self.oprocentowanie/100)*self.stanKonta).String;
+	self.stanKonta := self.stanKonta + ((self.oprocentowanie/100)*self.stanKonta);
+	write "Stan konta po kapitalizacji odsetek: " & self.pokazSaldo().String;
+end;
+
+
+
+
+
+
+
+wyplac(wyplacanaKwota: Decimal) updating;
+
+vars
+
+begin
+	write "Próba wyp³acenia kwoty " & wyplacanaKwota.String & ". Aktualny stan konta: " & self.pokazSaldo().String;
+	if self.stanKonta >= wyplacanaKwota then
+		self.stanKonta := self.stanKonta - wyplacanaKwota;
+		write "Wyp³acono z konta kwotê " & wyplacanaKwota.String & ". Aktualny stan konta: " & self.pokazSaldo().String;
+	else
+		write "Nie dokonano wyp³aty. Niewystarczaj¹ca iloœæ œrodków na koncie";
+	endif;
+end;

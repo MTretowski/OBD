@@ -1,0 +1,26 @@
+pokazSaldo(): Decimal;
+
+vars
+
+begin
+	return self.stanKonta;
+end;
+
+
+
+
+
+wyplac(wyplacanaKwota: Decimal) abstract, updating
+
+
+
+
+
+wplac(wplacanaKwota: Decimal) updating;
+
+vars
+
+begin
+	self.stanKonta := self.stanKonta + wplacanaKwota;
+	write "Wp³acono na rachunek kwotê " & wplacanaKwota.String;
+end;

@@ -1,0 +1,29 @@
+inicjuj(limitWyplat: Decimal) updating;
+
+vars
+
+begin
+	self.limitJednorazowejWyplaty := limitWyplat;
+end;
+
+
+
+
+
+wyplac(wyplacanaKwota: Decimal) updating;
+
+vars
+
+begin
+	write "Próba wyp³acenia kwoty " & wyplacanaKwota.String & ". Aktualny stan konta: " & self.pokazSaldo().String & ". Aktualny limit wyp³at: " & self.limitJednorazowejWyplaty.String;
+	if wyplacanaKwota <= self.limitJednorazowejWyplaty then
+		if self.stanKonta >= wyplacanaKwota then
+			self.stanKonta := self.stanKonta - wyplacanaKwota;
+			write "Wyp³acono z konta kwotê " & wyplacanaKwota.String & ". Aktualny stan konta: " & self.pokazSaldo().String;
+		else
+			write "Nie dokonano wyp³aty. Niewystarczaj¹ca iloœæ œrodków na koncie";
+		endif;
+	else
+		write "Nie dokonano wyp³aty. ¯¹dana kwota jest wiêksza ni¿ dopuszczalny limit";
+	endif;
+end;
